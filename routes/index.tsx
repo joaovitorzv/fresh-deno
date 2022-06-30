@@ -10,10 +10,14 @@ import { API_URL } from "../main.ts";
 export const handler: Handlers<{ joke: string }> = {
   async GET(_, ctx) {
     console.log("api url -> ", API_URL);
-    const res = await fetch(`${API_URL}/api/joke`);
-    const joke = await res.json();
-
-    return ctx.render({ joke });
+    try {
+      const res = await fetch(`${API_URL}/api/joke`);
+      const joke = await res.json();
+      return ctx.render({ joke });
+    } catch (e) {
+      console.log(e);
+      return ctx.render({ joke: "Error" });
+    }
   },
 };
 
