@@ -10,14 +10,14 @@ import { API_URL } from "../main.ts";
 export const handler: Handlers<{ joke: string }> = {
   async GET(_, ctx) {
     console.log(API_URL);
-    const res = await fetch(`${API_URL}/api/joke`);
+    const res = await fetch(`http://localhost:3000/api/joke`);
     const joke = await res.json();
 
     return ctx.render({ joke });
   },
 };
 
-export default function Home({ data, params }: PageProps) {
+export default function Home({ data }: PageProps) {
   const date = new Date();
   date.setSeconds(date.getSeconds() + 30);
   return (
