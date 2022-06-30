@@ -10,6 +10,10 @@ import manifest from "./fresh.gen.ts";
 import { config, setup } from "@twind";
 import { virtualSheet } from "twind/sheets";
 
+export const API_URL = Deno.env.get("PRODUCTION")
+  ? "https://joaovitorzv-fresh-deno.deno.dev/"
+  : "http://localhost:3000/";
+
 const sheet = virtualSheet();
 sheet.reset();
 setup({ ...config, sheet });
