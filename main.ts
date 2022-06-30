@@ -10,7 +10,11 @@ import manifest from "./fresh.gen.ts";
 import { config, setup } from "@twind";
 import { virtualSheet } from "twind/sheets";
 
-export const API_URL = Deno.env.get("PRODUCTION")
+import { config as dotEnvConfig } from "https://deno.land/x/dotenv@v1.0.1/mod.ts";
+
+dotEnvConfig({ export: true });
+
+export const API_URL = Deno.env.get("ENVIRONMENT")
   ? "https://joaovitorzv-fresh-deno.deno.dev/"
   : "http://localhost:3000/";
 
