@@ -10,7 +10,7 @@ import { API_URL } from "../main.ts";
 export const handler: Handlers<{ joke: string }> = {
   async GET(_, ctx) {
     console.log(API_URL);
-    const res = await fetch("http://localhost:3000/api/joke");
+    const res = await fetch(`${API_URL}/api/joke`);
     const joke = await res.json();
 
     return ctx.render({ joke });

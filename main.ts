@@ -14,9 +14,10 @@ import { config as dotEnvConfig } from "dotenv";
 
 dotEnvConfig({ override: true });
 
-export const API_URL = Deno.env.get("ENVIRONMENT")
-  ? "https://joaovitorzv-fresh-deno.deno.dev/"
-  : "http://localhost:3000/";
+export const API_URL =
+  Deno.env.get("ENVIRONMENT") === "prod"
+    ? "https://joaovitorzv-fresh-deno.deno.dev"
+    : "http://localhost:3000";
 
 const sheet = virtualSheet();
 sheet.reset();
